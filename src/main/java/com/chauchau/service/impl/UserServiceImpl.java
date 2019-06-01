@@ -30,4 +30,33 @@ public class UserServiceImpl implements UserService {
         List<User> result = userRepository.findAll();
         return result;
     }
+
+	
+
+	@Override
+	public User createUser(User user) {
+		// TODO Auto-generated method stub
+//		userRepository.createUser(user.getEmail(),user.isEnabled(),user.getFirstName(),user.getId());
+		return userRepository.save(user);
+	}
+
+	@Override
+	public User findUserbyPhone(String phone) {
+		// TODO Auto-generated method stub
+		User u = userRepository.getUserbyPhone(phone);
+		System.out.println("");
+        return u;
+	}
+
+	@Override
+	public int updateUser(User user) {
+		int returnValue = userRepository.updateUser(user.getEmail(),user.getFirstName(),user.getId());
+		return returnValue;
+	}
+
+	@Override
+	public int delete(User user) {
+		int returnValue = userRepository.deleteUser(user.getId());
+		return returnValue;
+	}
 }

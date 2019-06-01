@@ -6,3 +6,18 @@ jwt:
   expires_in: 300 # 5 minutes
   mobile_expires_in: 600 # 10 minutes
   secret: queenvictoria
+###
+#   Postgresql Settings
+###
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/chauchau
+    username: postgres
+    password: 123
+    driverClassName: org.postgresql.Driver
