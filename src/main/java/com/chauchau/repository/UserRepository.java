@@ -14,10 +14,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     	    nativeQuery = true)
     User getUserbyPhone(String phone);
    
-    
-    @Query(value = " insert into users (email, enabled, first_name,id) values (?1, ?2, ?3,?4)",
-    	    nativeQuery = true)
-    User createUser(String email, boolean enalbe,String first_name, long id);
     /*
      * need annotation Transactional for Modifying
      * Modifying --> excuteUpdate (return integer value )

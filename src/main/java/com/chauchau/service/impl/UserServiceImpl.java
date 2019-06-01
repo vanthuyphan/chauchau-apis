@@ -44,7 +44,6 @@ public class UserServiceImpl implements UserService {
 	public User findUserbyPhone(String phone) {
 		// TODO Auto-generated method stub
 		User u = userRepository.getUserbyPhone(phone);
-		System.out.println("");
         return u;
 	}
 
