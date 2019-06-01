@@ -26,8 +26,7 @@ public class User implements UserDetails {
 
     @Id
     @Column(name = "id")
-//    Change auto -> sequece because import.sql auto generate 2 record.
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "username")

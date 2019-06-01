@@ -36,8 +36,6 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
         String username;
         String authToken = tokenHelper.getToken(request);
-        logger.info("My Token: "+ authToken);
-        /*Get Token*/
 
         if (authToken != null) {
             // get username from token

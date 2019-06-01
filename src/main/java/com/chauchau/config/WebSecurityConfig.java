@@ -60,7 +60,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         HttpMethod.GET,
                         "/",
-                        "/h2-console/**",// Allow method Post for url mapping /api/register
                         "/auth/**",
                         "/webjars/**",
                         "/*.html",
@@ -69,13 +68,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js"
                 ).permitAll()
-                .antMatchers(HttpMethod.POST, "/api/register").permitAll() // Allow method Post for url mapping /api/register
                 .antMatchers("/auth/**").permitAll()
                 .anyRequest().authenticated().and()
-                /*.csrf().disable()
-                .headers().frameOptions().disable().and()*/
-                .addFilterBefore(new TokenAuthenticationFilter(tokenHelper, jwtUserDetailsService), BasicAuthenticationFilter.class)
-                ;
+                .addFilterBefore(new TokenAuthenticationFilter(tokenHelper, jwtUserDetailsService), BasicAuthenticationFilter.class);
 
         http.csrf().disable();
     }
