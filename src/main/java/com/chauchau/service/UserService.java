@@ -8,4 +8,8 @@ public interface UserService {
     User findById(Long id);
     User findByUsername(String username);
     List<User> findAll ();
+    User createUser(User user);
+    User findUserbyPhone(String phone);
+    int updateUser(User user);
+    int delete(User user);
 }
