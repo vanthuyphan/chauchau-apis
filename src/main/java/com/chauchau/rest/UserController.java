@@ -89,4 +89,9 @@ public class UserController {
 		}
 		return value;
 	}
+	@RequestMapping(method = RequestMethod.POST, value = "/sendEmail")
+	 @PreAuthorize("hasRole('USER')")
+	public void sendEmail(@RequestBody String toEmail) {
+		userService.sendMail(toEmail);
+	}
 }

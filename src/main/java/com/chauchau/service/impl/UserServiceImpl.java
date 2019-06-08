@@ -1,14 +1,17 @@
 package com.chauchau.service.impl;
 
-import com.chauchau.model.User;
-import com.chauchau.repository.UserRepository;
-import com.chauchau.service.UserService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.chauchau.model.User;
+import com.chauchau.repository.UserRepository;
+import com.chauchau.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -57,5 +60,18 @@ public class UserServiceImpl implements UserService {
 	public int delete(User user) {
 		int returnValue = userRepository.deleteUser(user.getId());
 		return returnValue;
+	}
+	@Autowired private JavaMailSender javaMailSender;
+	@Override
+	public void sendMail(String email) {
+		SimpleMailMessage msg = new SimpleMailMessage();
+        String[] emailTo = new String[1];
+        emailTo[0] = email;
+//        emailTo[2] = "";
+		msg.setTo(emailTo);
+
+        msg.setSubject("Test email Chau Chau");
+        msg.setText("Hello World ");
+        javaMailSender.send(msg);
 	}
 }
