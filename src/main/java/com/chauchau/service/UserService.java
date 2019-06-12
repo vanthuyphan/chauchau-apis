@@ -12,5 +12,4 @@ public interface UserService {
     User findUserbyPhone(String phone);
     int updateUser(User user);
     int delete(User user);
-    void sendMail(String email);
 }
