@@ -1,7 +1,9 @@
 package com.chauchau.rest;
 
+import com.chauchau.model.Mail;
 import com.chauchau.model.Respond;
 import com.chauchau.model.User;
+import com.chauchau.service.EmailService;
 import com.chauchau.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -23,6 +25,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private EmailService emailService;
 
 	@RequestMapping(method = GET, value = "/user/{userId}")
 	@PreAuthorize("hasRole('ADMIN')")
@@ -91,7 +95,8 @@ public class UserController {
 	}
 	@RequestMapping(method = RequestMethod.POST, value = "/sendEmail")
 	 @PreAuthorize("hasRole('USER')")
-	public void sendEmail(@RequestBody String toEmail) {
-		userService.sendMail(toEmail);
+	public void sendEmail(@RequestBody Mail mail) { 
+		emailService.sendEmail(mail);
+		
 	}
 }
