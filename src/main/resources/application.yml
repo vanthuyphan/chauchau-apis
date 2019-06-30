@@ -3,7 +3,7 @@ app:
 
 jwt:
   header: Authorization
-  expires_in: 300 # 5 minutes
+  expires_in: 3000 # 50 minutes
   mobile_expires_in: 600 # 10 minutes
   secret: queenvictoria
 ###
@@ -13,6 +13,7 @@ spring:
   jpa:
     database: POSTGRESQL
     show-sql: true
+    format_sql: true
     hibernate:
       ddl-auto: create-drop
   datasource:
@@ -21,3 +22,9 @@ spring:
     username: postgres
     password: 123
     driverClassName: org.postgresql.Driver
+    logging:
+  level:
+    org:
+      hibernate:
+        type: trace
+    

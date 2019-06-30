@@ -55,8 +55,19 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int delete(User user) {
-		int returnValue = userRepository.deleteUser(user.getId());
+	public int delete(List<Integer> idsDelete) {
+		int returnValue = 0;
+		try{
+			for (Integer id : idsDelete) {
+				userRepository.deleteUserAuthority(id);
+				userRepository.deleteUsersWithIds(id);
+			}
+			returnValue = returnValue + 1;
+		}
+		catch (Exception e) {
+			System.out.println(e.toString());
+			
+		}
 		return returnValue;
 	}
 	
