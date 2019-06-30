@@ -42,6 +42,12 @@ public class User implements UserDetails {
 
     @Column(name = "last_name")
     private String lastName;
+    
+    @Column(name = "middle_name")
+    private String middleName;
+    
+    @Column(name = "address")
+    private String address;
 
     @Column(name = "email")
     private String email;
@@ -55,7 +61,7 @@ public class User implements UserDetails {
     @Column(name = "last_password_reset_date")
     private Timestamp lastPasswordResetDate;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER )
     @JoinTable(name = "user_authority",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
@@ -103,7 +109,23 @@ public class User implements UserDetails {
         this.lastName = lastName;
     }
 
-    public void setAuthorities(List<Authority> authorities) {
+    public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setAuthorities(List<Authority> authorities) {
         this.authorities = authorities;
     }
 

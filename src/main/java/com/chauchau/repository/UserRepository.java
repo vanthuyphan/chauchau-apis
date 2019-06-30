@@ -1,5 +1,7 @@
 package com.chauchau.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -25,11 +27,23 @@ public interface UserRepository extends JpaRepository<User, Long> {
     	    nativeQuery = true)
     int updateUser(String param1,String param2,long id);
 
+    
+    /*Delete all reference of User_Authority */
+    
     @Transactional
     @Modifying
-    @Query(value = "Delete from users where id=?1 ",
+    @Query(value = "Delete from user_authority where user_id = ?1",
     	    nativeQuery = true)
-    int deleteUser(long id);
+    void deleteUserAuthority(int id);
+
+    
+    
+    
+    @Transactional
+    @Modifying
+    @Query(value = "Delete from users where id = ?1",
+    	    nativeQuery = true)
+    void deleteUsersWithIds(int ids);
 
 }
 

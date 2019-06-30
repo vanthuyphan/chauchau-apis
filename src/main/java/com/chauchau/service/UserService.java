@@ -11,5 +11,5 @@ public interface UserService {
     User createUser(User user);
     User findUserbyPhone(String phone);
     int updateUser(User user);
-    int delete(User user);
+    int delete(List<Integer> idsDelete);
 }
