@@ -19,8 +19,8 @@ spring:
   datasource:
     platform: postgres
     url: jdbc:postgresql://localhost:5432/chauchau
-    username: postgres
-    password: 123
+    username: chauchau
+    password: 12345678
     driverClassName: org.postgresql.Driver
     logging:
   level:
